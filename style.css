@@ -1,0 +1,106 @@
+:root {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --accent-color: #ff6b6b;
+  --card-bg: #1f1f1f;
+}
+
+body.light-theme {
+  --bg-color: #f0f0f0;
+  --text-color: #121212;
+  --accent-color: #ff6b6b;
+  --card-bg: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+/* Cartoon Floating Animation */
+.cartoon-container {
+  display: inline-block;      /* container shrinks to image size */
+  margin: 30px auto;          /* centers horizontally */
+  animation: floatCartoon 3.5s ease-in-out infinite alternate;
+}
+
+.cartoon-img {
+  width: 180px;               /* smaller, more subtle */
+  max-width: 100%;            /* responsive */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Gentle floating animation */
+@keyframes floatCartoon {
+  0% { transform: translateY(0) rotate(-1deg); }
+  25% { transform: translateY(-4px) rotate(1deg); }
+  50% { transform: translateY(-8px) rotate(-1deg); }
+  75% { transform: translateY(-4px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* ===== Theme Toggle ===== */
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ===== Landing / Birthday Text ===== */
+#landing h1, #birthday h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--accent-color);
+}
+
+#landing p, #birthday p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+/* ===== Buttons ===== */
+.landing-buttons button,
+.story-button,
+#story .story-button {
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 10px 25px;
+  border-radius: 25px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.landing-buttons button:hover,
+.story-button:hover,
+#story .story-button:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  transform: scale(1.05);
+}
+

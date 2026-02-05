@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Love 💖</title>
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #161616;
+      --accent: #ff5fa2;
+      --text: #ffffff;
+    }
+
+    body.light {
+      --bg: #fff0f6;
+      --card: #ffffff;
+      --accent: #ff4f8b;
+      --text: #1a1a1a;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.4s;
+    }
+
+    /* ---------- TOGGLE ---------- */
+    .toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card);
+      border: 2px solid var(--accent);
+      padding: 8px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .board {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      height: 600px;
+    }
+
+    /* ---------- CENTER CARD ---------- */
+    .center-card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--card);
+      border-radius: 20px;
+      padding: 25px;
+      width: 260px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(255, 95, 162, 0.25);
+      border: 2px solid var(--accent);
+      cursor: pointer;
+    }
+
+    .center-card img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .center-card h2 {
+      color: var(--accent);
+      margin: 5px 0;
+    }
+
+    /* ---------- MESSAGE BUBBLES ---------- */
+    .bubble {
+      position: absolute;
+      background: var(--card);
+      padding: 12px 16px;
+      border-radius: 15px;
+      border: 1.5px solid var(--accent);
+      width: 190px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .bubble:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(255,95,162,0.3);
+    }
+
+    /* positions */
+    .b1 { top: 30px; left: 40px; }
+    .b2 { top: 120px; right: 30px; }
+    .b3 { bottom: 120px; left: 30px; }
+    .b4 { bottom: 40px; right: 40px; }
+
+    /* ---------- MODAL ---------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-box {
+      background: var(--card);
+      padding: 25px 30px;
+      border-radius: 18px;
+      text-align: center;
+      max-width: 300px;
+      border: 2px solid var(--accent);
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-box button {
+      margin-top: 15px;
+      background: var(--accent);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- THEME TOGGLE -->
+  <div class="toggle" onclick="toggleTheme()">🌙 / 🌸</div>
+
+  <div class="board">
+
+    <!-- CENTER -->
+    <div class="center-card" onclick="showMessage('You are my favorite person in the whole world 💖')">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616490.png" alt="flowers">
+      <h2>TULIPS</h2>
+      <p>Your favorite flower</p>
+      <small>Tap me 🥹</small>
+    </div>
+
+    <!-- BUBBLES -->
+    <div class="bubble b1" onclick="showMessage('You make every day brighter just by existing 💫')">
+      Tap for a surprise 💌
+    </div>
+
+    <div class="bubble b2" onclick="showMessage('Loving you is the easiest thing I have ever done ❤️')">
+      Tap me too 😌
+    </div>
+
+    <div class="bubble b3" onclick="showMessage('I choose you today, tomorrow, and always 💍')">
+      Don’t skip me 👀
+    </div>
+
+    <div class="bubble b4" onclick="showMessage('Happy Birthday my love, this website is just for you 🎂')">
+      One more 💕
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <p id="modalText"></p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+    }
+
+    function showMessage(text) {
+      document.getElementById("modalText").innerText = text;
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

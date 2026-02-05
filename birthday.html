@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bubba 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#121212;
+  --text:#eaeaea;
+  --card:#1f1f1f;
+  --accent:#ff6b6b;
+}
+body.light-theme{
+  --bg:#f7f7f7;
+  --text:#1a1a1a;
+  --card:#ffffff;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+
+/* BUTTONS */
+#theme-toggle,#music-toggle{
+  position:fixed;
+  top:16px;
+  right:16px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  z-index:1000;
+}
+#music-toggle{ right:72px; }
+
+/* HERO */
+#birthday{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:90px 8vw 40px;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+/* CAKE */
+.cake-container{
+  position:relative;
+  flex:1;
+  max-width:560px;
+  opacity:0;
+  transform:translateX(-120%);
+  transition:1.2s ease;
+}
+.cake-container.show{
+  opacity:1;
+  transform:none;
+}
+.cake-container img{
+  width:100%;
+  display:block;
+}
+
+/* FLAME */
+.flame{
+  position:absolute;
+  top:6%;
+  left:50%;
+  width:28px;
+  height:48px;
+  transform:translateX(-50%);
+  animation:flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker{
+  0%{ transform:translateX(-50%) scale(1) rotate(-1deg); opacity:.9;}
+  100%{ transform:translateX(-50%) scale(1.1) rotate(1deg); opacity:1;}
+}
+
+/* TEXT */
+.birthday-text{
+  flex:1;
+  max-width:520px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease 1s;
+}
+.birthday-text.show{ opacity:1; transform:none; }
+
+.birthday-text h1{
+  font-family:'Great Vibes',cursive;
+  font-size:5.2rem;
+  margin-bottom:10px;
+}
+
+.birthday-text p{
+  font-family:'Playfair Display',serif;
+  line-height:1.9;
+  font-size:1.2rem;
+}
+
+/* RIBBON */
+.ribbon svg{
+  width:360px;
+  margin:14px 0 24px;
+  opacity:.8;
+}
+
+/* COUNTDOWN */
+#countdown{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  margin:40px 0 60px;
+}
+
+/* STORY */
+.story-section{
+  max-width:900px;
+  margin:auto;
+  padding-bottom:60px;
+}
+.story-section h2{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  margin-bottom:30px;
+}
+
+.slider{
+  overflow:hidden;
+}
+
+.slider-track{
+  display:flex;
+  transition:.6s ease;
+}
+
+.story-card{
+  min-width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+.story-inner{
+  max-width:620px;
+  background:var(--card);
+  padding:32px;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  font-family:'Playfair Display',serif;
+  line-height:1.85;
+}
+
+/* NAV */
+.slider-nav{
+  text-align:center;
+  margin-top:20px;
+}
+.slider-nav button{
+  background:var(--accent);
+  border:none;
+  padding:10px 18px;
+  border-radius:20px;
+  color:white;
+  cursor:pointer;
+}
+
+/* NEXT */
+.next-btn{
+  display:block;
+  margin:60px auto;
+  padding:12px 30px;
+  border-radius:30px;
+  border:2px solid var(--accent);
+  background:none;
+  color:var(--accent);
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  #birthday{ flex-direction:column; text-align:center; }
+  .birthday-text h1{ font-size:4rem; }
+}
+</style>
+</head>
+
+<body>
+
+<button id="theme-toggle">🌗</button>
+<button id="music-toggle">🎵</button>
+
+<audio id="bg-music" loop>
+  <source src="assets/audio/kahuti_ft_kinoti-feel_the_love_mp3_56536.mp3" type="audio/mpeg">
+</audio>
+
+<section id="birthday">
+  <div class="cake-container">
+    <img src="assets/images/cakee.png" alt="Cake">
+
+    <!-- FLAME -->
+    <svg class="flame" viewBox="0 0 30 60">
+      <defs>
+        <linearGradient id="flameGrad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#ff9f1c"/>
+          <stop offset="100%" stop-color="#ffd166"/>
+        </linearGradient>
+      </defs>
+      <path d="M15 0 C6 14, 10 26, 15 40 C20 26, 24 14, 15 0Z" fill="url(#flameGrad)"/>
+    </svg>
+  </div>
+
+  <div class="birthday-text">
+    <h1>Happy 23rd Birthday Bubba</h1>
+
+    <div class="ribbon">
+      <svg viewBox="0 0 400 60" fill="none" stroke="currentColor" stroke-width="3">
+        <path d="M10 30 
+                 C 80 5, 140 55, 200 30 
+                 S 320 5, 390 30"/>
+      </svg>
+    </div>
+
+    <p>
+      You are my favorite thing in this life — my safe place, my laughter,
+      my softness, and my strength all wrapped into one soul.
+    </p>
+    <p>
+      I made this just for you, slowly, gently, and with so much love in every detail 🤍
+    </p>
+  </div>
+</section>
+
+<div id="countdown">
+  <span id="days"></span> Days ·
+  <span id="hours"></span> Hours ·
+  <span id="minutes"></span> Minutes ·
+  <span id="seconds"></span> Seconds
+</div>
+
+<section class="story-section">
+<h2>Our Story</h2>
+
+<div class="slider">
+<div class="slider-track" id="track">
+
+  <div class="story-card">
+    <div class="story-inner">
+      <strong>2014–2015</strong><br>
+      Two quiet souls in the same class, stolen glances, shy smiles, and a success card that felt bigger than it was.
+      We didn’t know it then, but something had already started.
+    </div>
+  </div>
+
+  <div class="story-card">
+    <div class="story-inner">
+      <strong>2017–2018</strong><br>
+      Life brought us back together — older, braver, curious again.
+      Conversations felt familiar, like picking up a sentence we never finished.
+    </div>
+  </div>
+
+  <div class="story-card">
+    <div class="story-inner">
+      <strong>2020</strong><br>
+      Love in the middle of chaos. Corona days, deep feelings, distance, heartbreak —
+      but also proof that what we had was real.
+    </div>
+  </div>
+
+  <div class="story-card">
+    <div class="story-inner">
+      <strong>2022–2023</strong><br>
+      Growth, loss, lessons, and learning who we were apart.
+      Pain shaped us, but it didn’t erase us.
+    </div>
+  </div>
+
+  <div class="story-card">
+    <div class="story-inner">
+      <strong>2025–Now</strong><br>
+      Healing, choosing each other with intention,
+      loving softer, deeper, and more honestly than before.
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="slider-nav">
+<button onclick="prev()">◀</button>
+<button onclick="next()">▶</button>
+</div>
+</section>
+
+<button class="next-btn" onclick="location.href='gifts.html'">Next Surprise 🎁</button>
+<script>
+const themeToggle = document.getElementById('theme-toggle');
+const musicToggle = document.getElementById('music-toggle');
+const bgMusic = document.getElementById('bg-music');
+
+const days = document.getElementById('days');
+const hours = document.getElementById('hours');
+const minutes = document.getElementById('minutes');
+const seconds = document.getElementById('seconds');
+
+themeToggle.onclick = () => {
+  document.body.classList.toggle('light-theme');
+};
+
+musicToggle.onclick = () => {
+  bgMusic.paused ? bgMusic.play() : bgMusic.pause();
+};
+
+window.onload = () => {
+  document.querySelector('.cake-container').classList.add('show');
+  document.querySelector('.birthday-text').classList.add('show');
+};
+
+const target = new Date("Feb 2, 2026 00:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const d = target - now;
+
+  days.textContent = Math.max(0, Math.floor(d / 86400000));
+  hours.textContent = Math.max(0, Math.floor((d % 86400000) / 3600000));
+  minutes.textContent = Math.max(0, Math.floor((d % 3600000) / 60000));
+  seconds.textContent = Math.max(0, Math.floor((d % 60000) / 1000));
+}, 1000);
+
+/* SLIDER */
+let i = 0;
+const track = document.getElementById('track');
+
+function update() {
+  track.style.transform = `translateX(-${i * 100}%)`;
+}
+
+function next() {
+  i = (i + 1) % 5;
+  update();
+}
+
+function prev() {
+  i = (i + 4) % 5;
+  update();
+}
+</script>
+</body>
+</html>

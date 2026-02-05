@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special For You 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#121212;
+  --text:#eaeaea;
+  --accent:#ff6b6b;
+}
+body.light-theme{
+  --bg:#f7f7f7;
+  --text:#1a1a1a;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+
+/* THEME TOGGLE */
+#theme-toggle{
+  position:fixed;
+  top:16px;
+  right:16px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  z-index:1000;
+}
+
+/* CORNER LINES */
+.corner-line{
+  position:fixed;
+  width:160px; /* bigger */
+  opacity:0.7;
+  top:60px; /* adjust lower */
+  transition:filter 0.3s ease, width 0.3s ease;
+}
+.corner-line.left{ left:16px; }
+.corner-line.right{ right:16px; transform:scaleX(-1); }
+
+/* Adapt line colors to theme */
+body.light-theme .corner-line{ filter: invert(0); }
+body:not(.light-theme) .corner-line{ filter: invert(1); }
+
+/* MAIN CONTENT */
+.main-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:120px 20px 60px;
+  text-align:center;
+}
+
+.corner-line.left{
+  transform: rotate(270deg) scale(1.5);
+  top: 20px;
+  left: 20px;
+  position: fixed;
+}
+
+.corner-line.right{
+  transform: rotate(360deg) scale(1.5);
+  top: 20px;
+  right: 20px;
+  position: fixed;
+}
+
+.main-content h1{
+  font-family:'Great Vibes',cursive;
+  font-size:4rem;
+  margin-bottom:30px;
+  color:var(--accent);
+}
+
+.hearts-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* space between hearts */
+  margin: 30px 0;
+}
+
+.heart-link img {
+  width: 250px;      /* make hearts bigger */
+  height: 250px;
+  transition: transform 0.3s ease;
+}
+
+.heart-link img:hover {
+  transform: scale(1.2) rotate(-10deg); /* playful hover effect */
+  cursor: pointer;
+}
+
+
+/* BACK BUTTON */
+.back-btn{
+  padding:12px 30px;
+  border-radius:30px;
+  border:2px solid var(--accent);
+  background:none;
+  color:var(--accent);
+  cursor:pointer;
+  font-size:1rem;
+  transition:all 0.3s ease;
+}
+.back-btn:hover{
+  background:var(--accent);
+  color:var(--bg);
+  transform:scale(1.05);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .main-content h1{ font-size:3rem; }
+  .hearts-container img{ width:60px; height:60px; }
+  .corner-line{ width:120px; top:50px; }
+}
+</style>
+</head>
+<body>
+
+<!-- THEME TOGGLE -->
+<button id="theme-toggle">🌗</button>
+
+<!-- CORNER LINES -->
+ <img src="assets/images/Flourishy-Corner-2.svg" class="corner-line left alt="Decorative line">
+<img src="assets/images/Flourishy-Corner-2.svg" class="corner-line right" alt="Decorative line">
+
+<div class="main-content">
+  <h1>Special For You 🤍</h1>
+  <!-- HEARTS SECTION -->
+<div class="hearts-container">
+  <a href="memories.html" class="heart-link">
+    <img src="assets/images/red-heart-with-bow.png" alt="Memories Heart">
+  </a>
+  <a href="letter.html" class="heart-link">
+    <img src="assets/images/red-heart-with-bow.png" alt="Love Letter Heart">
+  </a>
+  <a href="promises.html" class="heart-link">
+    <img src="assets/images/red-heart-with-bow.png" alt="Promises Heart">
+  </a>
+  <a href="songs.html" class="heart-link">
+    <img src="assets/images/red-heart-with-bow.png" alt="Favorite Song Heart">
+  </a>
+  <a href="voucher.html" class="heart-link">
+    <img src="assets/images/red-heart-with-bow.png" alt="Yes Day Voucher Heart">
+  </a>
+</div>
+
+  <button class="back-btn" onclick="window.location.href='birthday.html'">← Back</button>
+</div>
+
+<script>
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+});
+</script>
+
+</body>
+</html>

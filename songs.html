@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Song 🎶</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#121212;
+  --text:#ffffff;
+  --card:#ffffff;
+}
+body.light-theme{
+  --bg:#f7f7f7;
+  --text:#1a1a1a;
+  --card:#ffffff;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Playfair Display', serif;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+.bg {
+  position:fixed;
+  inset:0;
+  background:url('assets/images/bg.png') center/cover no-repeat;
+  z-index:-3;
+}
+.blur {
+  position:fixed;
+  inset:0;
+  backdrop-filter: blur(6px);
+  background:rgba(0,0,0,0.25);
+  z-index:-2;
+}
+
+/* TOP CONTROLS */
+#theme-toggle {
+  position:fixed;
+  top:16px;
+  right:16px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:none;
+  font-size:1.2rem;
+  cursor:pointer;
+  z-index:10;
+}
+.back-btn {
+  position:fixed;
+  top:16px;
+  left:16px;
+  padding:10px 24px;
+  border-radius:25px;
+  border:2px solid var(--text);
+  background:none;
+  color:var(--text);
+  cursor:pointer;
+  z-index:10;
+}
+
+/* TITLE */
+h1{
+  text-align:center;
+  margin-top:90px;
+  font-family:'Great Vibes', cursive;
+  font-size:4rem;
+}
+
+/* POLAROID */
+.polaroid{
+  width:80vw;
+  max-width:900px;
+  margin:40px auto;
+  background:var(--card);
+  padding:16px 16px 36px;
+  border-radius:14px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.35);
+  text-align:center;
+}
+
+body:not(.light-theme) .polaroid{
+  background:#1a1a1a;
+}
+
+/* VIDEO */
+#song-video{
+  width:100%;
+  height:45vw;
+  max-height:500px;
+  border-radius:10px;
+  object-fit:cover;
+}
+
+/* CAPTION */
+.caption{
+  margin-top:14px;
+  font-family:'Montserrat', sans-serif;
+  font-size:0.9rem;
+  color:#555;
+}
+body:not(.light-theme) .caption{
+  color:#ccc;
+}
+
+/* STICKERS */
+.stickers {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+}
+.sticker {
+  position:absolute;
+  width:200px;
+  opacity:0.6;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.2));
+}
+.top-left {
+  top:20px;
+  left:20px;
+  transform: rotate(-12deg);
+}
+.top-right {
+  top:20px;
+  right:20px;
+  transform: rotate(10deg);
+}
+.bottom-left {
+  bottom:20px;
+  left:20px;
+  transform: rotate(6deg);
+}
+.bottom-right {
+  bottom:20px;
+  right:20px;
+  transform: rotate(-10deg);
+}
+
+/* MOBILE & TABLET */
+@media(max-width:768px){
+  h1{ font-size:3rem; margin-top:60px; }
+  #song-video{ height:55vw; }
+  .polaroid{ width:90vw; padding:12px 12px 28px; }
+  .caption{ font-size:0.85rem; }
+  .sticker{ width:90px; }
+  #theme-toggle, .back-btn{ width:auto; padding:8px 20px; font-size:1rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="blur"></div>
+
+<button id="theme-toggle">🌗</button>
+<button class="back-btn" onclick="location.href='gifts.html'">← Back</button>
+
+<h1>Our Song</h1>
+
+<div class="polaroid">
+  <video id="song-video" controls autoplay loop>
+    <source src="assets/audio/breathless_shayne_ward_lyrics_h264_31246.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="caption">A song that feels like us 🤍</div>
+</div>
+
+<!-- STICKERS -->
+<div class="stickers">
+  <img src="assets/images/calligraphy-heart-loop.png" class="sticker top-left">
+  <img src="assets/images/i-love-you-typography-vector.png" class="sticker top-right">
+  <img src="assets/images/plankton.png" class="sticker bottom-left">
+  <img src="assets/images/calligraphy-heart-loop.png" class="sticker bottom-right">
+</div>
+
+<script>
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.onclick = () => {
+  document.body.classList.toggle('light-theme');
+};
+</script>
+
+</body>
+</html>

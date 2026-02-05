@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever & Always</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* --- RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #fddde6, #c8b7ff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+/* --- MAIN CONTAINER --- */
+.container {
+  max-width: 900px;
+  padding: 40px 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.85);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* --- HEARTFELT TEXT --- */
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  color: #f28ad8;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 22px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* --- BACK / REPLAY BUTTON --- */
+.back-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #f28ab2;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 12px;
+  transition: background 0.3s;
+}
+
+.back-btn:hover {
+  background: #e06699;
+}
+
+/* --- CARTOON STICKERS --- */
+.sticker {
+  position: absolute;
+  width: 100px;
+  opacity: 0.9;
+  z-index: 0;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Different positions for each sticker */
+.sticker-1 { top: 50px; left: 20px; }
+.sticker-2 { top: 180px; left: 60px; }
+.sticker-3 { top: 100px; right: 20px; }
+.sticker-4 { top: 250px; right: 60px; }
+
+/* Float animation for stickers */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  h1 { font-size: 38px; }
+  p { font-size: 18px; }
+  .sticker { width: 70px; }
+  .sticker-2 { left: 30px; top: 140px; }
+  .sticker-4 { right: 30px; top: 200px; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 32px; }
+  p { font-size: 16px; }
+  .sticker { width: 50px; }
+  .sticker-2 { left: 20px; top: 120px; }
+  .sticker-4 { right: 20px; top: 180px; }
+  .container { padding: 30px 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Cartoon stickers -->
+<img src="assets/images/Spongebob-Heart-Eyes-Happy-Character-PNG.png" class="sticker sticker-1" alt="SpongeBob">
+<img src="assets/images/stitch.png.png" class="sticker sticker-2" alt="Stitch">
+<img src="assets/images/plankton.png" class="sticker sticker-3" alt="Plankton">
+<img src="assets/images/i-love-you-typography-vector.png" class="sticker sticker-4" alt="Heart">
+
+<div class="container">
+  <h1>Forever & Always</h1>
+  <p>
+    Thank you for being you, for all the laughter, the little moments, and every day we’ve shared.  
+    This isn’t the end, just the beginning of more memories, more love, and more us.  
+    I love you, always and forever ❤️
+  </p>
+  
+  <a href="index.html" class="back-btn">Replay the Birthday Journey</a>
+</div>
+
+</body>
+</html>

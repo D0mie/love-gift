@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Letter to You 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#fdf7f0;
+  --text:#1a1a1a;
+}
+body.dark-theme {
+  --bg:#121212;
+  --text:#ffffff;
+}
+body {
+  margin:0;
+  font-family:'Playfair Display', serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  overflow-y: auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center; /* center content horizontally */
+  min-height:100vh;
+  padding:20px;
+  text-align:left;
+}
+
+/* BACKGROUND FADE */
+#bg-fade {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url('assets/images/letter4.jfif') center/cover no-repeat;
+  opacity:0;
+  transition:opacity 1.5s ease;
+  z-index:-1;
+}
+
+/* LETTER CONTAINER */
+#letter {
+  width: 100%;
+  max-width: 700px; /* max width */
+  font-size:1.3rem;
+  line-height:1.8;
+  opacity:1;
+  padding: 0px 10px; /* padding inside container */
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.05); /* optional faint background */
+  border-radius: 12px;
+  margin-top: 60px; /* space from top */
+  position: relative;
+}
+
+/* THEME TOGGLE */
+#theme-toggle {
+  position: fixed;
+  top:16px;
+  right:16px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  font-size:1.2rem;
+  z-index:1000;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 24px;
+  background:#f28ab2;
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+  border-radius:25px;
+  transition:0.3s ease;
+}
+
+.back-btn:hover {
+  background:#e06699;
+}
+
+/* LETTER SPAN FADE */
+span {
+  opacity:0;
+  transition: opacity 0.2s linear;
+}
+
+/* MOBILE & TABLET FIX */
+@media (max-width: 768px) {
+  body {
+    padding:15px;
+  }
+
+  #letter {
+    width:95%;
+    font-size:1.05rem;
+    line-height:1.6;
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+  .back-btn {
+    font-size:14px;
+    padding:8px 20px;
+  }
+
+  #theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+
+<body>
+<button id="theme-toggle">🌗</button>
+
+<div id="bg-fade"></div>
+
+<div id="letter"></div>
+
+<a href="gifts.html" class="back-btn">← Back</a>
+
+<script>
+// THEME TOGGLE
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+});
+
+// LETTER
+const letterDiv = document.getElementById('letter');
+
+const text = `My Love, 💛||From the very first moment we saw each other back in 2014, I felt something I couldn't quite explain. Even though we were just classmates, and I kept my feelings quiet, I remember sending you that little success card at the end of KCPE. It was my way of showing you how special you were to me, even then.Over the years, life took us in different directions, but fate always found a way to bring us back together. From reconnecting in 2017–2018, to the brief moments of joy and heartbreak during the corona period in 2020, and the challenges we faced in 2022–2023, every step has shaped the bond we share.Now in 2025, after all the ups and downs, I can honestly say I love you more deeply than I ever imagined. Every laugh, every hug, every quiet moment together has reminded me that we are meant to grow, learn, and dream side by side.On your special day, I want you to know that you are my heart, my home, and my everything. I am grateful for you, for us, and for every memory we've created together. Today is your day, my love, and I hope it is filled with all the happiness you deserve. 🌸❤️||Forever yours, [Domie]`;
+
+function createLetterSpans(text){
+  letterDiv.innerHTML = '';
+  const sections = text.split('||');
+  sections.forEach((section, i)=>{
+    for(const char of section){
+      const span = document.createElement('span');
+      span.textContent = char;
+      letterDiv.appendChild(span);
+    }
+    if(i < sections.length -1){
+      letterDiv.appendChild(document.createElement('br'));
+    }
+  });
+}
+createLetterSpans(text);
+
+window.addEventListener('load', () => {
+  const bg = document.getElementById('bg-fade');
+  bg.style.opacity = 1;
+
+  setTimeout(() => {
+    const spans = document.querySelectorAll('#letter span');
+    typeLetter(spans);
+  }, 1200);
+});
+
+function typeLetter(spans, index=0){
+  if(index < spans.length){
+    spans[index].style.opacity = 1;
+    setTimeout(() => typeLetter(spans, index+1), 25);
+  }
+}
+</script>
+</body>
+</html>
